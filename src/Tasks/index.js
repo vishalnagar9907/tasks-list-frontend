@@ -15,7 +15,7 @@ const Tasks = ()=>{
 
     const {createTask} = useCreateTask();
 
-    const {updateTask} = useUpdateTask({fetchListTasks})
+    const {updateTask} = useUpdateTask({})
     const onDragEnd = (result)=>{
         const { destination, source } = result;
 
@@ -40,13 +40,23 @@ const Tasks = ()=>{
     } else {
       add = tasks[source.index];
       tasks.splice(source.index, 1);
+
+      if(destination.droppableId !== source.droppableId){
       updateTask({id:add._id,task_status:'deleted',task_name:add.taskName})
+      }
+
     }
 
     if (destination.droppableId === "droppable-1") {
       localTask.splice(destination.index, 0, add);
     } else {
-     createTask({task:add.taskName, taskStatus:add.taskStatus})
+
+      if(destination.droppableId !== source.droppableId){
+
+      createTask({task:add.taskName, taskStatus:add.taskStatus})
+      
+      }
+
       tasks.splice(destination.index, 0, add);
       
     }
