@@ -17,7 +17,7 @@ const TasksListing =({
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     >
-                    <span className="todos__heading">Local Tasks</span>
+                    <span className="task_label">Local Tasks</span>
                     {localTasksList.map((task,index)=>{
                     return (
                         <TaskCard
@@ -43,7 +43,7 @@ const TasksListing =({
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     >
-                        <span className="todos__heading">Active Tasks</span>
+                        <span className="task_label">Active Tasks</span>
                         {tasksList.map((task,index)=>{
                             return (
                             <TaskCard
